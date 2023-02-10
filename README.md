@@ -77,7 +77,7 @@ sudo mv update-cloudflare-dns.conf /usr/local/bin/update-cloudflare-dns.conf
 | ---------------------- | ----------- | --------------------------------- |
 | notify_me_telegram     | yes         | Use Telegram notifications yes/no |
 | telegram_chat_id       | ChangeMe    | Chat ID of the bot                |
-| telegtam_bot_API_Token | ChangeMe    | Telegtam's Bot API Token          |
+| telegtam_bot_API_Token | ChangeMe    | Telegram's Bot API Token          |
 
 ## Running The Script
 
