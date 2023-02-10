@@ -1,2 +1,2 @@
 # m h  dom mon dow   command
-* * * * * /home/pi/cloudflare-ddns/update-cloudflare-dns >> /home/pi/cloudflare-ddns/cloudflare-ddns.log 2>&1
+* * * * * /home/pi/cloudflare-ddns/update-cloudflare-dns.sh >> /home/pi/cloudflare-ddns/cloudflare-ddns.log 2>&1
