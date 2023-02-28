@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+CHAT_SPACE="AAAAKkuUgas"
+CHAT_KEY="AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI"
+CHAT_TOKEN="v5CIEJzI2Yk24qZFXNfpSrivxBo_84QBs37ji-XorCs%3D"
+
 ###  Create .update-cloudflare-dns.log file of the last run for debug
 parent_path="$(dirname "${BASH_SOURCE[0]}")"
 FILE=${parent_path}/update-cloudflare-dns.log
@@ -161,6 +165,8 @@ for record in "${dns_records[@]}"; do
   if [ ${notify_me_telegram} == "yes" ]; then
     telegram_notification=$(
       curl -s -X GET "https://api.telegram.org/bot${telegram_bot_API_Token}/sendMessage?chat_id=${telegram_chat_id}" --data-urlencode "text=${record} DNS record updated to: ${ip}"
+      curl -s -H 'Content-Type: application/json' -X POST https://chat.googleapis.com/v1/spaces/$CHAT_SPACE/messages?key=$CHAT_KEY\&token=$CHAT_TOKEN\&threadKey=certbot \
+ --data "{\"text\": \"${record} DNS record updated to: ${ip}\"}" > /dev/null
     )
     if [[ ${telegram_notification=} == *"\"ok\":false"* ]]; then
       echo ${telegram_notification=}
