@@ -164,7 +164,7 @@ for record in "${dns_records[@]}"; do
 
   if [ ${notify_me_telegram} == "yes" ]; then
     telegram_notification=$(
-      curl -s -X GET "https://api.telegram.org/bot${telegram_bot_API_Token}/sendMessage?chat_id=${telegram_chat_id}" --data-urlencode "text=${record} DNS record updated to: ${ip}"
+      #curl -s -X GET "https://api.telegram.org/bot${telegram_bot_API_Token}/sendMessage?chat_id=${telegram_chat_id}" --data-urlencode "text=${record} DNS record updated to: ${ip}"
       curl -s -H 'Content-Type: application/json' -X POST https://chat.googleapis.com/v1/spaces/$CHAT_SPACE/messages?key=$CHAT_KEY\&token=$CHAT_TOKEN\&threadKey=certbot \
  --data "{\"text\": \"${record} DNS record updated to: ${ip}\"}" > /dev/null
     )
